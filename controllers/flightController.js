@@ -35,10 +35,10 @@ exports.getBooking = async (req, res) => {
 
 exports.createBooking = async (req, res) => {
   try {
-    const { flight, time, price, date } = await req.body;
+    const { title, time, price, date } = await req.body;
     const newBooking = {
       id: uuid(),
-      flight,
+      title,
       time,
       price,
       date
@@ -59,10 +59,10 @@ exports.updateBooking = async (req, res) => {
   try {
     let id = req.params.id
     const booking = Bookings.find((booking) => booking.id === id)
-    const { flight, time, price, date } = await req.body;
+    const { title, time, price, date } = await req.body;
 
     if (booking) {
-      booking.flight = flight;
+      booking.title = title;
       booking.time = time;
       booking.price = price;
       booking.date = date
